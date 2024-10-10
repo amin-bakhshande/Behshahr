@@ -1,13 +1,13 @@
 import React from 'react'
-import topLogo from "./../../../assets/svg/toplogo.svg"
+import topLogo from "./../../../assets/svg/Landing/toplogo.svg"
 
 const TopDescription = () => {
   return (
-    <div class="bg-[#A4F6DE]">
+    <div class="bg-gradient-to-br from-emerald-300/85 from-35% to-white">
 
         <div class="container mx-auto flex items-center ">
             
-             <div class="w-94"><img class="mx-auto ml-8" src={topLogo} alt="" /></div>
+             <div class="w-94 mb-5"><img class="mx-auto ml-8" src={topLogo} alt="" /></div>
 
              <div class="w-1/3 mx-auto rtl">
                 <h1 class="text-2xl mb-10">آموزشگاه اچ وان</h1>

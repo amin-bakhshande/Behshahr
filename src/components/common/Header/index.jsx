@@ -1,11 +1,11 @@
 import React from "react"
-import logoLanding from "./../../../assets/svg/logosite.svg"
-import seachIcon from "./../../../assets/svg/searchicon.svg"
+import logoLanding from "./../../../assets/svg/Landing/logosite.svg"
+import seachIcon from "./../../../assets/svg/Landing/searchicon.svg"
 
 const Header = () => {
   return (
 
-  <div class="bg-[#A4F6DE]">
+  <div class="bg-emerald-300/85">
     <div class="flex justify-between items-center container mx-auto px-20 h-20">
     <div class="flex justify-center items-center">
     <button class="text-[#22445D] bg-[#00DF9D] rounded-lg cursor-pointer p-2">ورود / ثبت نام</button>
