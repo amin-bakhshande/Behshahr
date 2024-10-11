@@ -9,47 +9,47 @@ const Category = () => {
   return (
     <>
     <div class="text-center leading-10">
-        <p class="text-[35px] font-bold mt-10">خدمات ما</p>
+        <p class="text-[35px] font-bold mt-10">دسته بندی</p>
         <p class="leading-10">ما فرصت آماده شدن برای زندگی را فراهم می کنیم</p>
     </div>
 
         
 
 
-    <div className="mx-16 flex justify-around items-center rounded-3xl  h-[230px]">
+    <div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl  h-[230px]">
 
 
-<div className='p-5 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
+<div className='p-10 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
     <img src={categorty1} alt="" />
-    <p>مقاله آموزشی</p>
-    <p className='font-medium text-2xl'>28</p>
+    <p class="mt-4 rtl">دوره های طراحی UI/UX</p>
+    <p className='font-medium text-2xl mt-5'>28</p>
 </div>
 
 
-<div className='p-5 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
+<div className='p-10 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
 <img src={categorty2} alt="" />
-    <p>دوره آموزشی</p>
-    <p className='font-medium text-2xl'>182</p>
+    <p class="mt-4 rtl">دوره های طراحی UI/UX</p>
+    <p className='font-medium text-2xl mt-5'>182</p>
 </div>
 
 
-<div className='p-5 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
+<div className='p-10 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
 <img src={categorty3} alt="" />
-    <p>داشنجو</p>
-    <p className='font-medium text-2xl'>81</p>
+    <p class="mt-4 rtl">دوره های طراحی UI/UX</p>
+    <p className='font-medium text-2xl mt-5'>81</p>
 </div>
 
 
-<div className='p-5 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
+<div className='p-10 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
 <img src={categorty4} alt="" />
-    <p>اساتید حرفه ای</p>
-    <p className='font-medium text-2xl'>52</p>
+    <p class="mt-4 rtl">دوره های طراحی UI/UX</p>
+    <p className='font-medium text-2xl mt-5'>52</p>
 </div>
 
-<div className='p-5 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
+<div className='p-10 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>
 <img src={categorty5} alt="" />
-    <p>اساتید حرفه ای</p>
-    <p className='font-medium text-2xl'>52</p>
+    <p class="mt-4 rtl">دوره های طراحی UI/UX</p>
+    <p className='font-medium text-2xl mt-5'>52</p>
 </div>
 
 </div>

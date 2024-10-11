@@ -4,6 +4,7 @@ import { TopDescription } from '../../components/LandingHolder/Top-Description'
 import { OurServices } from '../../components/LandingHolder/OurServices'
 import { Statistics } from '../../components/LandingHolder/Statistics'
 import { Category } from '../../components/LandingHolder/Category'
+import { Courses } from '../../components/LandingHolder/Courses'
 
 const Landing = () => {
   return (
@@ -14,6 +15,7 @@ const Landing = () => {
         <OurServices />
         <Statistics />
         <Category />
+        <Courses />
 
 
     </div>
