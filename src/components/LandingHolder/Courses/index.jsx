@@ -1,19 +1,18 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 
 import courses1 from "./../../../assets/svg/Landing/courses1.svg"
 import dislike from "./../../../assets/svg/Landing/CoursesDisLike.svg"
 import favorite from "./../../../assets/svg/Landing/CoursesFavo.svg"
 import like from "./../../../assets/svg/Landing/CoursesLike.svg"
+import profileimg from "./../../../assets/svg/Landing/ProfileImage.svg"
+import starRating from "./../../../assets/svg/Landing/StarRating.svg"
+import line from "./../../../assets/svg/Landing/Line.svg"
 const Courses = () => {
   return (
     <>
@@ -24,51 +23,16 @@ const Courses = () => {
     </div>
 
 
+    <Swiper navigation={true} modules={[Navigation]} className="mySwiper h-[40rem]">
 
-    {/* <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={50}
-      slidesPerView={3}
-      navigation
-      pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-    >
-      <SwiperSlide>
-        <img src={categorty2} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={categorty3} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={categorty4} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={categorty5} alt="" />
-      </SwiperSlide>
-      
-      
-    </Swiper> */}
+        <SwiperSlide>
+          <div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl ">
 
-
-<div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl">
-
-
-
-
-
-
-
-
-
-
-<div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] text-TextGreen h-[450px] w-[370px]'>
+<div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
     <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
   
 
-  <div className='flex justify-between items-center mt-16'>
+  <div className='flex justify-between items-center mt-10'>
 
 
     <div className='flex justify-center items-center'>
@@ -78,21 +42,302 @@ const Courses = () => {
     <img src={favorite} alt="" />
 
     </div>
-             <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">ورود / ثبت نام</button>
+             <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">وضعیت دوره</button>
    </div>
 
+   <p className='rtl mt-6 text-[#1A1E21] text-xl'>آشنایی با برنامه نویسی با وردپرس</p>
+
+    <div className='flex justify-between items-center mt-5'>
+
+      <div className='flex justify-center items-center'>
+        <img src={starRating} alt="" />
+        <p className='ml-2'>4.8</p>
+      </div>
+       <div className='flex justify-between items-center'>
+        <p className='mr-2'>جان اسمیت</p>
+        <img src={profileimg} alt="" />
+       </div>
+
+    </div>
+
+
+    <p className='rtl mt-3 ml-28  text-[#41A789] text-xs '> 50 ساعت سخنرانی ( 190 ساعت ) </p>
+
+    <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+
+    <img className='mt-5' src={line} alt="" />
+
+
+    <div className='flex justify-between items-center mt-5'>
+      <p className='text-sm text-PriceRed rtl'> 3,000,000 تومان</p>
+      <p className='text-sm text-'>: هزینه تمام دوره</p>
+    </div>
+
+    <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
+
+</div>
+
+<div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
+    <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
+  
+
+  <div className='flex justify-between items-center mt-10'>
+
+
+    <div className='flex justify-center items-center'>
+
+    <img  src={like} alt="" />
+    <img className='mx-2' src={dislike} alt="" />
+    <img src={favorite} alt="" />
+
+    </div>
+             <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">وضعیت دوره</button>
+   </div>
 
    <p className='rtl mt-6 text-[#1A1E21] text-xl'>آشنایی با برنامه نویسی با وردپرس</p>
+
+    <div className='flex justify-between items-center mt-5'>
+
+      <div className='flex justify-center items-center'>
+        <img src={starRating} alt="" />
+        <p className='ml-2'>4.8</p>
+      </div>
+       <div className='flex justify-between items-center'>
+        <p className='mr-2'>جان اسمیت</p>
+        <img src={profileimg} alt="" />
+       </div>
+
+    </div>
+
+
+    <p className='rtl mt-3 ml-28  text-[#41A789] text-xs '> 50 ساعت سخنرانی ( 190 ساعت ) </p>
+
+    <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+
+    <img className='mt-5' src={line} alt="" />
+
+
+    <div className='flex justify-between items-center mt-5'>
+      <p className='text-sm text-PriceRed rtl'> 3,000,000 تومان</p>
+      <p className='text-sm text-'>: هزینه تمام دوره</p>
+    </div>
+
+    <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
+
 </div>
 
+<div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
+    <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
+  
+
+  <div className='flex justify-between items-center mt-10'>
 
 
+    <div className='flex justify-center items-center'>
+
+    <img  src={like} alt="" />
+    <img className='mx-2' src={dislike} alt="" />
+    <img src={favorite} alt="" />
+
+    </div>
+             <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">وضعیت دوره</button>
+   </div>
+
+   <p className='rtl mt-6 text-[#1A1E21] text-xl'>آشنایی با برنامه نویسی با وردپرس</p>
+
+    <div className='flex justify-between items-center mt-5'>
+
+      <div className='flex justify-center items-center'>
+        <img src={starRating} alt="" />
+        <p className='ml-2'>4.8</p>
+      </div>
+       <div className='flex justify-between items-center'>
+        <p className='mr-2'>جان اسمیت</p>
+        <img src={profileimg} alt="" />
+       </div>
+
+    </div>
 
 
+    <p className='rtl mt-3 ml-28  text-[#41A789] text-xs '> 50 ساعت سخنرانی ( 190 ساعت ) </p>
+
+    <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+
+    <img className='mt-5' src={line} alt="" />
 
 
+    <div className='flex justify-between items-center mt-5'>
+      <p className='text-sm text-PriceRed rtl'> 3,000,000 تومان</p>
+      <p className='text-sm text-'>: هزینه تمام دوره</p>
+    </div>
+
+    <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
 
 </div>
+
+            </div>
+        </SwiperSlide>
+        
+
+        <SwiperSlide>
+          <div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl ">
+
+<div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
+    <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
+  
+
+  <div className='flex justify-between items-center mt-10'>
+
+
+    <div className='flex justify-center items-center'>
+
+    <img  src={like} alt="" />
+    <img className='mx-2' src={dislike} alt="" />
+    <img src={favorite} alt="" />
+
+    </div>
+             <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">وضعیت دوره</button>
+   </div>
+
+   <p className='rtl mt-6 text-[#1A1E21] text-xl'>آشنایی با برنامه نویسی با وردپرس</p>
+
+    <div className='flex justify-between items-center mt-5'>
+
+      <div className='flex justify-center items-center'>
+        <img src={starRating} alt="" />
+        <p className='ml-2'>4.8</p>
+      </div>
+       <div className='flex justify-between items-center'>
+        <p className='mr-2'>جان اسمیت</p>
+        <img src={profileimg} alt="" />
+       </div>
+
+    </div>
+
+
+    <p className='rtl mt-3 ml-28  text-[#41A789] text-xs '> 50 ساعت سخنرانی ( 190 ساعت ) </p>
+
+    <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+
+    <img className='mt-5' src={line} alt="" />
+
+
+    <div className='flex justify-between items-center mt-5'>
+      <p className='text-sm text-PriceRed rtl'> 3,000,000 تومان</p>
+      <p className='text-sm text-'>: هزینه تمام دوره</p>
+    </div>
+
+    <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
+
+</div>
+
+<div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
+    <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
+  
+
+  <div className='flex justify-between items-center mt-10'>
+
+
+    <div className='flex justify-center items-center'>
+
+    <img  src={like} alt="" />
+    <img className='mx-2' src={dislike} alt="" />
+    <img src={favorite} alt="" />
+
+    </div>
+             <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">وضعیت دوره</button>
+   </div>
+
+   <p className='rtl mt-6 text-[#1A1E21] text-xl'>آشنایی با برنامه نویسی با وردپرس</p>
+
+    <div className='flex justify-between items-center mt-5'>
+
+      <div className='flex justify-center items-center'>
+        <img src={starRating} alt="" />
+        <p className='ml-2'>4.8</p>
+      </div>
+       <div className='flex justify-between items-center'>
+        <p className='mr-2'>جان اسمیت</p>
+        <img src={profileimg} alt="" />
+       </div>
+
+    </div>
+
+
+    <p className='rtl mt-3 ml-28  text-[#41A789] text-xs '> 50 ساعت سخنرانی ( 190 ساعت ) </p>
+
+    <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+
+    <img className='mt-5' src={line} alt="" />
+
+
+    <div className='flex justify-between items-center mt-5'>
+      <p className='text-sm text-PriceRed rtl'> 3,000,000 تومان</p>
+      <p className='text-sm text-'>: هزینه تمام دوره</p>
+    </div>
+
+    <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
+
+</div>
+
+<div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
+    <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
+  
+
+  <div className='flex justify-between items-center mt-10'>
+
+
+    <div className='flex justify-center items-center'>
+
+    <img  src={like} alt="" />
+    <img className='mx-2' src={dislike} alt="" />
+    <img src={favorite} alt="" />
+
+    </div>
+             <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">وضعیت دوره</button>
+   </div>
+
+   <p className='rtl mt-6 text-[#1A1E21] text-xl'>آشنایی با برنامه نویسی با وردپرس</p>
+
+    <div className='flex justify-between items-center mt-5'>
+
+      <div className='flex justify-center items-center'>
+        <img src={starRating} alt="" />
+        <p className='ml-2'>4.8</p>
+      </div>
+       <div className='flex justify-between items-center'>
+        <p className='mr-2'>جان اسمیت</p>
+        <img src={profileimg} alt="" />
+       </div>
+
+    </div>
+
+
+    <p className='rtl mt-3 ml-28  text-[#41A789] text-xs '> 50 ساعت سخنرانی ( 190 ساعت ) </p>
+
+    <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+
+    <img className='mt-5' src={line} alt="" />
+
+
+    <div className='flex justify-between items-center mt-5'>
+      <p className='text-sm text-PriceRed rtl'> 3,000,000 تومان</p>
+      <p className='text-sm text-'>: هزینه تمام دوره</p>
+    </div>
+
+    <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
+
+</div>
+
+            </div>
+        </SwiperSlide>
+        
+        
+    </Swiper>
+
+      <div className='flex justify-center items-center mt-2'>
+           <button class="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full ">مشاهده دوره های بیشتر</button>
+      </div>
 
 </>
   )
