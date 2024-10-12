@@ -23,7 +23,7 @@ const Courses = () => {
     </div>
 
 
-    <Swiper navigation={true} modules={[Navigation]} className="mySwiper h-[40rem]">
+    <Swiper navigation={true} modules={[Navigation]} className="mySwiper h-[46rem]">
 
         <SwiperSlide>
           <div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl ">
