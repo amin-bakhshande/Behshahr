@@ -8,6 +8,7 @@ import { Courses } from '../../components/LandingHolder/Courses'
 import { Professionals } from '../../components/LandingHolder/Professionals'
 import { NewsArticles } from '../../components/LandingHolder/News-articles'
 import { Suggestions } from '../../components/LandingHolder/Suggestions'
+import { Footer } from '../../components/common/Footer/Footer'
 
 const Landing = () => {
   return (
@@ -22,6 +23,7 @@ const Landing = () => {
         <Professionals />
         <NewsArticles />
         <Suggestions />
+        <Footer />
 
 
     </div>
