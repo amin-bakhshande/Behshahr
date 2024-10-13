@@ -16,7 +16,7 @@ const Category = () => {
         
 
 
-    <div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl  h-[230px]">
+    <div className="mt-16 mx-16 flex justify-around items-center rounded-3xl  h-[230px]">
 
 
 <div className='p-10 text-center rounded-md bg-[#FBF6F6] text-TextGreen'>

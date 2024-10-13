@@ -6,6 +6,7 @@ import { Statistics } from '../../components/LandingHolder/Statistics'
 import { Category } from '../../components/LandingHolder/Category'
 import { Courses } from '../../components/LandingHolder/Courses'
 import { Professionals } from '../../components/LandingHolder/Professionals'
+import { NewsArticles } from '../../components/LandingHolder/News-articles'
 
 const Landing = () => {
   return (
@@ -18,6 +19,7 @@ const Landing = () => {
         <Category />
         <Courses />
         <Professionals />
+        <NewsArticles />
 
 
     </div>

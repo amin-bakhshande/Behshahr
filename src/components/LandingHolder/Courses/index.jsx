@@ -26,7 +26,7 @@ const Courses = () => {
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper h-[40rem]">
 
         <SwiperSlide>
-          <div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl ">
+          <div className="mt-16 mx-16 flex justify-around items-center rounded-3xl ">
 
 <div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
     <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
@@ -180,7 +180,7 @@ const Courses = () => {
         
 
         <SwiperSlide>
-          <div className="mt-16 mx-16 flex justify-evenly items-center rounded-3xl ">
+          <div className="mt-16 mx-16 flex justify-around items-center rounded-3xl ">
 
 <div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
     <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
@@ -279,6 +279,9 @@ const Courses = () => {
     <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
 
 </div>
+
+
+
 
 <div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
     <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
