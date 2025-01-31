@@ -1,14 +1,12 @@
-import React from 'react'
-import { ArticlesDetailsForm } from '../../components/ArticlesDetailsForm'
-import { HeaderUserlogin } from '../../components/common/HeaderUserLogin'
-import { Footer } from '../../components/common/Footer'
+import React from "react";
+import { ArticlesDetailsForm } from "../../components/ArticlesDetailsForm";
 
 const ArticlesDetails = () => {
   return (
     <>
       <ArticlesDetailsForm />
     </>
-  )
-}
+  );
+};
 
-export { ArticlesDetails }
+export { ArticlesDetails };

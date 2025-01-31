@@ -6,7 +6,7 @@ import { deleteApi, getApi, postApi } from "../../core/api/api";
 import { toast } from "react-toastify";
 import "swiper/css/navigation";
 import "swiper/css";
-import {CoursesSlider} from "./../../../src/components/common/SliderCourses"
+import {CoursesSlider} from "../common/SliderCourses"
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/starRating.svg";
 import articlePic from "./../../assets/svg/ArticlesDetails/articlePic.svg";
@@ -28,8 +28,45 @@ import {
   AiFillWindows,
 } from "react-icons/ai";
 import moment from "jalali-moment";
+
+
+interface Comment {
+  id: number;
+  title: string;
+  describe: string; 
+  likeCount: number;
+  dissLikeCount: number;
+  replyCount: number;
+  inserDate: string;
+}
+
+interface NewsDetails {
+  detailsNewsDto: {
+    title: string;
+    describe: string;
+    googleDescribe: string;
+    googleTitle: string;
+    miniDescribe: string;
+    currentLikeCount: number;
+    currentDissLikeCount: number;
+    currentRate: number;
+    currentView: number;
+    insertDate: string;
+    keyword: string;
+    addUserFullName: string;
+  };
+  commentDtos: Comment[];
+}
+
+interface ApiResponse {
+  data: NewsDetails & {
+    success: boolean;
+  };
+}
+
+
 const ArticlesDetailsForm = () => {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState <NewsDetails|null>(null);
   const [show, setShow] = useState(1);
   const { id } = useParams();
 
@@ -37,7 +74,7 @@ const ArticlesDetailsForm = () => {
     if (!id) return;
     const path = `/News/${id}`;
     try {
-      const response = await getApi({ path });
+      const response = await( getApi({ path })) as ApiResponse;
       if (response?.data) {
         setCards(response.data);
         console.log("NeWS Deatils: ", response.data);
@@ -51,7 +88,7 @@ const ArticlesDetailsForm = () => {
     getArticlesTop();
   }, [id]);
 
-  const addCommentsArticles = async (inputValues) => {
+  const addCommentsArticles = async (inputValues:{describe:string ;title:string ;newsId:number ;userId:number;}) => {
     const data = {
       describe: inputValues.describe,
       title: inputValues.title,
@@ -63,7 +100,7 @@ const ArticlesDetailsForm = () => {
 
     const path = `/News/CreateNewsComment`;
     const body = data;
-    const response = await postApi({ path, body });
+    const response = await ( postApi({ path, body })) as ApiResponse;
     console.log(response);
     if (response.data.success) {
       toast.success("عملیات با موفقیت انجام شد.");
@@ -71,10 +108,10 @@ const ArticlesDetailsForm = () => {
     }
   };
 
-  const addLike = async (id) => {
+  const addLike = async (id:number) => {
     console.log(id);
     const path = `/News/CommentLike/${id}`;
-    const response = await postApi({ path });
+    const response = await (postApi({ path })) as ApiResponse;
     if (response?.data?.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       getArticlesTop();
@@ -82,7 +119,7 @@ const ArticlesDetailsForm = () => {
     console.log(response);
   };
 
-  const addDislike = async (id) => {
+  const addDislike = async (id:number) => {
     console.log("Comment ID:", id);
     const body = {
       deleteEntityId: id,
@@ -90,7 +127,7 @@ const ArticlesDetailsForm = () => {
     const path = `/News/DeleteCommentLikeNews`;
 
     try {
-      const response = await deleteApi({ path, body });
+      const response = await( deleteApi({ path, body })) as ApiResponse;
       console.log("API Response:", response);
       if (response?.data?.success) {
         toast.success("عملیات با موفقیت انجام شد.");
@@ -282,7 +319,7 @@ const ArticlesDetailsForm = () => {
               {show === 1 ? (
                 <>
                   <Formik
-                    initialValues={{ title: "", describe: "" }}
+               initialValues={{ title: "", describe: "", newsId: Number(id), userId: 40296 }}
                     onSubmit={addCommentsArticles}
                   >
                     {() => (
