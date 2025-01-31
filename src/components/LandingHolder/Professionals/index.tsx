@@ -2,12 +2,24 @@ import React, { useEffect, useState } from "react";
 import { getApi } from "../../../core/api/api";
 import { FaBookReader, FaReact } from "react-icons/fa";
 import { FaBookAtlas } from "react-icons/fa6";
-const Professionals = () => {
-  const [Teachers, setTeachers] = useState(null);
 
-  const getTeachers = async (cont) => {
+interface Teachers {
+  courseCounts: number;
+  newsCount: number;
+  pictureAddress: string;
+  fullName: string;
+}
+
+interface ApiRes {
+  data: Teachers[];
+}
+
+const Professionals = () => {
+  const [Teachers, setTeachers] = useState <Teachers[]> ([]);
+
+  const getTeachers = async () => {
     const path = `/Home/GetTeachers`;
-    const response = await getApi({ path });
+    const response = await (getApi({ path })) as ApiRes;
     console.log(response?.data);
     if (response) {
       setTeachers(response.data);
@@ -22,11 +34,11 @@ const Professionals = () => {
   return (
     <>
       <div className="flex justify-center items-center gap-2 relative bg-gradient-to-br from-emerald-300/75 from-35% to-white h-[600px] dark:dark:bg-slate-900 dark:bg-none mt-16 ">
-        <div class=" absolute top-[2rem] left-[15.5rem] lg:left-[39.5rem] text-nowrap text-center items-center ">
-          <p class="text-[35px] font-bold text-black dark:text-white">
+        <div className=" absolute top-[2rem] left-[15.5rem] lg:left-[39.5rem] text-nowrap text-center items-center ">
+          <p className="text-[35px] font-bold text-black dark:text-white">
             حرفه ای های ما
           </p>
-          <p class="leading-10 text-black dark:text-white">
+          <p className="leading-10 text-black dark:text-white">
             ساختن دنیایی بهتر، یک دوره در یک زمان
           </p>
         </div>

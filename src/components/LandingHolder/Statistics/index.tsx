@@ -7,12 +7,23 @@ import { getLandingStatistics } from "../../../core/api/landingPage";
 import { useState, useEffect } from "react";
 import { getApi } from "../../../core/api/api";
 
+interface StatisticsType {
+  newsCount:number;
+  courseCount:number;
+  studentCount:number;
+  teacherCount:number;
+}
+
+interface StatisticsApi {
+  data:StatisticsType;
+}
+
 const Statistics = () => {
-  const [Statistics, setStatistics] = useState(null);
+  const [Statistics, setStatistics] = useState <StatisticsType> ();
 
   const getStatistics = async () => {
     const path = `/Home/LandingReport`;
-    const response = await getApi({ path });
+    const response = await (getApi({ path })) as StatisticsApi;
     console.log(response?.data);
     if (response) {
       setStatistics(response.data);

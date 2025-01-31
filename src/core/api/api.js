@@ -1,5 +1,5 @@
 import http from "../interceptor";
-export const getApi = async ({ path, params }) => {
+export const getApi = async ({ path, params = {} }) => {
   try {
     const response = await http.get(`${path}`, { params });
     return response;
@@ -26,7 +26,7 @@ export const editApi = async ({ path, body }) => {
 };
 export const deleteApi = async ({ path, body }) => {
   try {
-    const response = await http.delete(`${path}`, {data:body});
+    const response = await http.delete(`${path}`, { data: body });
     return response;
   } catch (error) {
     return error;

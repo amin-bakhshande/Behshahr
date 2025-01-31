@@ -10,7 +10,15 @@ const AboutForm = () => {
     <div>
       <div className="flex justify-around items-center">
         <div>
-          <Formik>
+          <Formik 
+          initialValues={{
+            fname: "",
+            email: "",
+            phone: "",
+            text: "",
+          }}
+          onSubmit={(value) => console.log(value)}
+          >
             <Form>
               <div
                 className=" flex flex-col items-center mt-10 w-[25rem] lg:w-[37rem] h-[30rem] relative rounded-[1.5rem]
@@ -19,25 +27,29 @@ const AboutForm = () => {
                 <Field
                   className="bg-[#FFFFFF] dark:bg-gray-700 dark:text-white dark:placeholder-slate-300 rtl mt-10 placeholder-[#807A7A] h-[50px] w-[20rem] border-solid border border-TextGreen rounded-md "
                   placeholder="  نام و نام خانواگی"
+                  name="fname"
                 ></Field>
 
                 <Field
                   className="bg-[#FFFFFF] dark:bg-gray-700 dark:text-white dark:placeholder-slate-300 rtl mt-5 placeholder-[#807A7A] h-[50px] w-[20rem] border-solid border border-TextGreen rounded-md"
                   placeholder="  ایمیل آدرس"
+                  name="email"
                 ></Field>
 
                 <Field
                   className="bg-[#FFFFFF] dark:bg-gray-700 dark:text-white dark:placeholder-slate-300 rtl my-5 placeholder-[#807A7A] h-[50px] w-[20rem] border-solid border border-TextGreen rounded-md"
                   placeholder="  شماره تماس"
+                  name="phone"
                 ></Field>
 
                 <Field
                   className="bg-[#FFFFFF] dark:bg-gray-700 dark:text-white dark:placeholder-slate-300 rtl placeholder-[#807A7A] items-start h-[160px] w-[20rem] border-solid border border-TextGreen rounded-md "
                   placeholder="  متن..."
+                  name="text"
                 ></Field>
 
                 <button
-                  class="w-[20rem] h-[40px] dark:bg-gray-700 dark:text-white dark:hover:bg-green-300
+                  className="w-[20rem] h-[40px] dark:bg-gray-700 dark:text-white dark:hover:bg-green-300
                         text-[#21394B] bg-BgGreen rounded-lg mt-4"
                 >
                   ارسال
