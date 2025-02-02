@@ -14,8 +14,16 @@ import { BiDislike, BiLike } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { NewsArticlesType } from ".";
 
-const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
+interface ArticlesCardProps {
+  item:NewsArticlesType ;
+  addLike:(id:number)=> Promise <void>;
+  addDislike: (id:number)=> Promise<void>;
+  addStarRatng:(id:number)=> Promise <void>;
+  filter:Record <string ,string |number>
+}
+const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }:ArticlesCardProps) => {
   return (
     <>
       <div className="flex  items-center w-[22rem]  ">
@@ -79,7 +87,7 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
                 </div>
               </div>
 
-              <button class=" text-TextGreen dark:bg-gray-700 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
+              <button className=" text-TextGreen dark:bg-gray-700 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
                 {/* تاریخ دوره:{" "}
                 {moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")} */}
                 {item.newsCatregoryName}

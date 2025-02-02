@@ -13,24 +13,45 @@ import { toast } from "react-toastify";
 import { Pagination } from "swiper/modules";
 import { Stack } from "@mui/material";
 
-const NewsArticlesForm = () => {
-  // const [sort, setSort] = useState([]);
-  // const [sort2, setSort2] = useState([]);
 
-  const [cards, setCards] = useState([]);
-  const [sort, setSort] = useState({});
-  const [pagination, setPagination] = useState({});
-  const [PageNumber, setPageNumber] = useState(1);
-  const [filter, setFilter] = useState();
+export interface NewsArticlesType {
+  addUserProfileImage: string;
+  currentUserIsLike: number;
+  currentLikeCount: number;
+  currentUserIsDissLike: number;
+  currentDissLikeCount: number;
+  currentUserSetRate: number;
+  currentRate: number;
+  newsCatregoryName: string;
+  title: string;
+  miniDescribe: string;
+  insertDate: string;
+  id: number;
+  addUserFullName: string;
+}
+
+interface dataApi {
+  data:{
+    news:NewsArticlesType[];
+    success:boolean;
+  }
+}
+
+
+
+const NewsArticlesForm = () => {
+
+  const [cards, setCards] = useState <NewsArticlesType[]>([]);
+  const [filter, setFilter] = useState<Record<string ,string | number>>({});
 
   const params = useParams();
 
-  const getArticlesTop = async (params) => {
+  const getArticlesTop = async (params?:Record<string ,string |number >) => {
     const path = `/News`;
-    const response = await getApi({
+    const response = await (getApi({
       path,
       params: { params: { ...params, RowsOfPage: 9 } },
-    });
+    })) as dataApi;
 
     console.log(response.data?.news);
     if (response) {
@@ -42,7 +63,7 @@ const NewsArticlesForm = () => {
     getArticlesTop();
   }, []);
 
-  const filterDataHanlder = (newParams) => {
+  const filterDataHanlder = (newParams?:Record <string ,string | number>) => {
     setFilter({ PageNumber: 1, ...filter, ...newParams });
     const allFilter = {
       PageNumber: 1,
@@ -54,10 +75,10 @@ const NewsArticlesForm = () => {
     getArticlesTop();
   };
 
-  const addLike = async (id) => {
+  const addLike = async (id:number) => {
     console.log(id);
     const path = `News/NewsLike/${id}`;
-    const response = await postApi({ path });
+    const response = await (postApi({ path })) as dataApi;
     if (response?.data?.success) {
       filterDataHanlder({});
       toast.success("عملیات با موفقیت انجام شد.");
@@ -66,10 +87,10 @@ const NewsArticlesForm = () => {
     console.log(response);
   };
 
-  const addDislike = async (id) => {
+  const addDislike = async (id:number) => {
     console.log(id);
     const path = `/News/NewsDissLike/${id}`;
-    const response = await postApi({ path });
+    const response = await (postApi({ path })) as dataApi;
     if (response?.data?.success) {
       filterDataHanlder({});
       toast.success("عملیات با موفقیت انجام شد.");
@@ -78,10 +99,10 @@ const NewsArticlesForm = () => {
     console.log(response);
   };
 
-  const addStarRatng = async (id) => {
+  const addStarRatng = async (id:number) => {
     console.log(id);
     const path = `/News/NewsRate?NewsId=${id}&RateNumber=2`;
-    const response = await postApi({ path });
+    const response = await (postApi({ path })) as dataApi;
     if (response?.data?.success) {
       filterDataHanlder({});
       toast.success("عملیات با موفقیت انجام شد.");
@@ -101,11 +122,11 @@ const NewsArticlesForm = () => {
   // };
 
   
-const handleChangePage = (e, i) => {
-    console.log(e);
-    console.log(i);
-    filterDataHanlder({ PageNumber: i });
-  };
+// const handleChangePage = (e:number, i:number) => {
+//     console.log(e);
+//     console.log(i);
+//     filterDataHanlder({ PageNumber: i });
+//   };
 
 
   return (
@@ -140,7 +161,12 @@ const handleChangePage = (e, i) => {
 
             <img className="h-[8px] ml-5" src={arrowUnder} alt="" />
           </select>
-          <Formik>
+          <Formik
+          initialValues={
+            {text:""}
+          }onSubmit={(value)=>console.log(value)
+          }
+          >
             <Form className="ml-10">
               <div className="relative">
                 <Field
@@ -148,7 +174,7 @@ const handleChangePage = (e, i) => {
                   className="rtl p-4 dark:border-white dark:text-white border-green-800 w-72 lg:w-80 text-sm text-gray-900 border dark:bg-gray-800 rounded-2xl bg-gray-50"
                   placeholder="جستجو..."
                   required
-                  onChange={(e) => {
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     if (e.target.value === "") {
                       filterDataHanlder({ PageNumber: 1 });
                     } else {
@@ -168,9 +194,9 @@ const handleChangePage = (e, i) => {
                   version="1.1"
                   id="Capa_1"
                   xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
                   viewBox="-53.72 -53.72 595.84 595.84"
-                  xml:space="preserve"
+                  xmlSpace="preserve"
                 >
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g
@@ -199,14 +225,15 @@ const handleChangePage = (e, i) => {
             {cards?.map((item, index) => {
               return (
                 <ArticlesCard
+                key={item.id}
                   item={item}
                   addLike={addLike}
                   addDislike={addDislike}
                   addStarRatng={addStarRatng}
                   filter={filter}
-                  handleChangePage={handleChangePage}
-                  pagination={pagination}
-                  setPagination={setPagination}
+                  // handleChangePage={handleChangePage}
+                  // pagination={pagination}
+                  // setPagination={setPagination}
                 />
               );
             })}
