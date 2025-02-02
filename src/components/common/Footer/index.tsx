@@ -8,7 +8,7 @@ import facebook from "./../../../assets/svg/Landing/FacebookF.svg";
 const Footer = () => {
   return (
     <>
-      <div class="bg-gradient-to-r from-green-300 to-gray-50 mt-16 h-[300px]  dark:dark:bg-slate-900 dark:bg-none  ">
+      <div className="bg-gradient-to-r from-green-300 to-gray-50 mt-16 h-[300px]  dark:dark:bg-slate-900 dark:bg-none  ">
         <div className="flex justify-around items-start pt-8 text-[#444444E5] dark:text-white">
           <div className="rtl">
             <p>اخبار آموزشگاه</p>
@@ -22,7 +22,7 @@ const Footer = () => {
                 placeholder="    example@gmail.com"
               />
               <button
-                class="w-[60px] h-[40px] rounded-l-lg
+                className="w-[60px] h-[40px] rounded-l-lg
                                      text-[#21394B] bg-BgGreen dark:bg-gray-800 dark:text-white right-0 bottom-0"
               >
                 ثبت

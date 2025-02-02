@@ -10,29 +10,42 @@ import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
 import courses1 from "./../../../assets/courses1.svg";
 import { getApi } from "../../../core/api/api";
 import { ProfileContext } from "../../../context/ProfileProvider";
+import { string } from "yup";
+
+interface headerType {
+  title:string;
+cost:number;
+levelName:number;
+}
+
+interface headerApi{
+  data:
+  {
+    courseFilterDtos: headerType[];
+  }
+}
 
 const Header = () => {
-  const [show, setShow] = useState(false);
-  const [datas, setDatas] = useState([]);
-  const [filter, setFilter] = useState();
+  const [show, setShow] = useState (false);
+  const [datas, setDatas] = useState <headerType[]> ([]);
+  const [filter, setFilter] = useState <{PageNumber?:number; Query?:string; filter?:string; }>({});
   const [modal, setModal] = useState(false);
 
-  const GetCouresesTop = async (params) => {
+  const GetCouresesTop = async (params:{PageNumber?:number ; Query:string;}) => {
     const path = `/Home/GetCoursesWithPagination`;
-    const response = await getApi({
+    const response = await (getApi({
       path,
       params: { params: { ...params, RowsOfPage: 9 } },
-    });
+    })) as headerApi;
     console.log(response.data);
     setDatas(response.data.courseFilterDtos);
-    setPagination(response.datas);
   };
 
   useEffect(() => {
-    GetCouresesTop();
+    GetCouresesTop({Query:''});
   }, []);
 
-  const filterDataHanlder = (newParams) => {
+  const filterDataHanlder = (newParams:{PageNumber?:number ; Query:string;filter?:string;}) => {
     setFilter({ PageNumber: 1, ...filter, ...newParams });
     const allFilter = {
       PageNumber: 1,
@@ -40,16 +53,16 @@ const Header = () => {
       ...newParams,
     };
     console.log("filter", allFilter);
-    GetCouresesTop(allFilter);
+    GetCouresesTop({...allFilter , Query:allFilter.Query||''});
   };
 
   const { data } = useContext(ProfileContext);
   console.log("ContextData Dashboard: ", data);
 
   return (
-    <div class=" bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
-      <div class="flex justify-between items-center px-20 h-20">
-        <div class="flex justify-center items-center">
+    <div className=" bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
+      <div className="flex justify-between items-center px-20 h-20">
+        <div className="flex justify-center items-center">
           {localStorage.getItem("token") ? (
             <>
               <button onClick={() => setModal(!modal)}>
@@ -60,7 +73,7 @@ const Header = () => {
                 />
               </button>
 
-              <div onClick={() => setShow(!show)} class="">
+              <div onClick={() => setShow(!show)} className="">
                 <img src={seachIcon} alt="" />
               </div>
               {modal && (
@@ -94,11 +107,11 @@ const Header = () => {
           ) : (
             <>
               <Link to="/login">
-                <button class="text-[#22445D] bg-[#00DF9D] dark:bg-gray-800 dark:text-white rounded-lg cursor-pointer p-2">
+                <button className="text-[#22445D] bg-[#00DF9D] dark:bg-gray-800 dark:text-white rounded-lg cursor-pointer p-2">
                   ورود / ثبت نام
                 </button>
               </Link>
-              <div class="">
+              <div className="">
                 <img src={seachIcon} alt="" />
               </div>
             </>
@@ -112,11 +125,11 @@ const Header = () => {
             <div className="w-[45%] h-52 mx-auto mt-64 flex flex-col gap-3 justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none bg-white dark:bg-slate-800 rounded-lg shadow-sm">
               <button
                 type="button"
-                class="text-gray-400 bg-transparent absolute left-0 bottom-44 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-700 dark:hover:text-white"
+                className="text-gray-400 bg-transparent absolute left-0 bottom-44 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => setShow(false)}
               >
                 <svg
-                  class="w-4 h-4"
+                  className="w-4 h-4"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -132,7 +145,14 @@ const Header = () => {
                 </svg>
               </button>
 
-              <Formik>
+              <Formik
+                  initialValues={{
+                    fname: "",
+                    email: "",
+                    text: "",
+                  }}
+                  onSubmit={(value) => console.log(value)}
+              >
                 <Form>
                   <div className="relative">
                     <Field
@@ -140,7 +160,7 @@ const Header = () => {
                       className="rtl p-4 dark:text-white border-green-800 w-[20rem] lg:w-[40rem] text-sm text-gray-900 border dark:bg-gray-700 rounded-lg shadow-xl bg-gray-100"
                       placeholder="جستجو..."
                       required
-                      onChange={(e) =>
+                      onChange={(e:React.ChangeEvent<HTMLInputElement>) =>
                         filterDataHanlder({
                           PageNumber: 1,
                           Query: e.target.value,
@@ -156,9 +176,9 @@ const Header = () => {
                       version="1.1"
                       id="Capa_1"
                       xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
                       viewBox="-53.72 -53.72 595.84 595.84"
-                      xml:space="preserve"
+                      xmlSpace="preserve"
                     >
                       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                       <g
@@ -196,43 +216,43 @@ const Header = () => {
           </>
         )}
 
-        <div class="flex justify-between items-center dark:text-white hidden lg:flex">
+        <div className="flex justify-between items-center dark:text-white hidden lg:flex">
           <Link to="/about">
             {" "}
-            <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
+            <span className="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
               درباره ما
             </span>
           </Link>
 
           <Link to="/news-articles">
             {" "}
-            <span class="hover:bg-[#9e969657] hover:text-[#158B68] mx-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
+            <span className="hover:bg-[#9e969657] hover:text-[#158B68] mx-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
               مقالات
             </span>
           </Link>
 
           <Link to="/courses-list">
             {" "}
-            <span class="hover:bg-[#9e969657] hover:text-[#158B68] mr-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
+            <span className="hover:bg-[#9e969657] hover:text-[#158B68] mr-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
               دوره ها
             </span>
           </Link>
 
           <Link to="/">
             {" "}
-            <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
+            <span className="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
               صفحه اصلی{" "}
             </span>
           </Link>
         </div>
 
-        <div class="flex justify-center items-center dark:text-white">
+        <div className="flex justify-center items-center dark:text-white">
           <Link to="/">
-            <span class="cursor-pointer">آکادمی اچ وان</span>
+            <span className="cursor-pointer">آکادمی اچ وان</span>
           </Link>
 
           <Link to="/">
-            <img class="h-10 cursor-pointer" src={logoLanding} alt="" />
+            <img className="h-10 cursor-pointer" src={logoLanding} alt="" />
           </Link>
         </div>
 
@@ -243,9 +263,9 @@ const Header = () => {
 };
 
 export function ResponsiveMenu() {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

@@ -6,24 +6,15 @@ import topProfile from "./../../../assets/svg/ArticlesDetails/profileimg.svg";
 import topIcon from "./../../../assets/svg/ArticlesDetails/profileimg.svg";
 import { Link } from "react-router-dom";
 import DarkLightToggle from "./../DarkMode.jsx";
-import { ResponsiveMenu } from "../Header/index.jsx";
+import { ResponsiveMenu } from "../Header/index.tsx";
 
 const HeaderUserlogin = () => {
   return (
-
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
       <div class="flex justify-between items-center container mx-auto px-20 h-20">
         <div class="flex justify-center items-center">
-
-
-
-          
-
-
           <DarkLightToggle />
         </div>
-
-
 
         <div class="flex justify-between items-center dark:text-white hidden lg:inline-block">
           <Link to="/about">
