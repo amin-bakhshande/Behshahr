@@ -18,12 +18,31 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { getApi } from "../../../core/api/api";
 import { Link } from "react-router-dom";
 
+interface DataType {
+  currentImageAddressTumb: string;
+  currentLikeCount: number;
+  currentDissLikeCount: number;
+  currentRate: number;
+  newsCatregoryName: string;
+  title: string;
+  addUserFullName: string;
+  addUserProfileImage: string;
+  miniDescribe: string;
+  id: number;
+}
+
+interface dataApi{
+data:{
+  news:DataType[]
+}
+}
+
 const SliderArticles = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState <DataType[]>([]);
 
   const getArticles = async () => {
     const path = `/News`;
-    const response = await getApi({ path });
+    const response = await( getApi({ path }))as dataApi;
     console.log("dskjhjh", response.data?.news);
     if (response) {
       setData(response.data?.news);
@@ -35,12 +54,12 @@ const SliderArticles = () => {
 
   return (
     <>
-      <div class="text-center leading-10 mt-14 dark:text-white">
+      <div className="text-center leading-10 mt-14 dark:text-white">
         <br />
         <br />
         <br />
-        <p class="text-[35px] font-bold">اخبار و مقالات</p>
-        <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
+        <p className="text-[35px] font-bold">اخبار و مقالات</p>
+        <p className="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
       </div>
       <br />
       <br />
@@ -84,7 +103,7 @@ const SliderArticles = () => {
                           ? item?.currentImageAddressTumb
                           : noimage
                       }
-                      top
+                    
                     />
                   </div>
 
@@ -112,7 +131,7 @@ const SliderArticles = () => {
                       </div>
                     </div>
 
-                    <button class="text-TextGreen truncate ... bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">
+                    <button className="text-TextGreen truncate ... bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">
                       {item?.newsCatregoryName}
                     </button>
                   </div>
@@ -156,7 +175,7 @@ const SliderArticles = () => {
 
       <div className="flex justify-center items-center my-[-3rem] lg:mt-2 ">
         <Link to="/news-articles">
-          <button class="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full dark:bg-gray-800">
+          <button className="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full dark:bg-gray-800">
             مشاهده مقالات بیشتر
           </button>
         </Link>
