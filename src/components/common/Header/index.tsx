@@ -156,6 +156,7 @@ const Header = () => {
                 <Form>
                   <div className="relative">
                     <Field
+                    name="search"
                       type="text"
                       className="rtl p-4 dark:text-white border-green-800 w-[20rem] lg:w-[40rem] text-sm text-gray-900 border dark:bg-gray-700 rounded-lg shadow-xl bg-gray-100"
                       placeholder="جستجو..."

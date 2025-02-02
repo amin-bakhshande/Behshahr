@@ -21,7 +21,7 @@ import { ForgetStepOne } from "../components/ForgetPasswordForm/StepOne";
 import { ForgetStepTwo } from "../components/ForgetPasswordForm/StepTwo";
 import PassProvider from "../core/provider/PasswoedProvider";
 import { ForgetPasswordForm } from "../components/ForgetPasswordForm/index.jsx";
-import { CoursesListForm } from "../components/CoursesListForm/index.jsx";
+import { CoursesListForm } from "../components/CoursesListForm/index.tsx";
 import { CoursesList } from "../screens/CoursesList/index.jsx";
 import { MainLayout } from "../screens/layout/MainLayout.jsx";
 
