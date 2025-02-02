@@ -17,12 +17,31 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Hidden } from "@mui/material";
 
+interface CoursesType {
+  likeCount: number;
+  dissLikeCount: number;
+  statusName: string;
+  title: string;
+  currentRegistrants: number;
+  teacherName: string;
+  describe: string;
+  cost: number;
+  courseId: number;
+}
+interface dataApi{
+  data:{
+    courseFilterDtos:CoursesType[];
+    success:boolean;
+    
+  }
+}
+
 const CoursesSlider = () => {
-  const [courses, setcourses] = useState([]);
+  const [courses, setcourses] = useState <CoursesType[]>([]);
 
   const getCourses = async () => {
     const path = `/Home/GetCoursesWithPagination`;
-    const response = await getApi({ path });
+    const response = await (getApi({ path })) as dataApi;
     // console.log(response.data?.courseFilterDtos);
     if (response) {
       setcourses(response.data?.courseFilterDtos);
@@ -32,14 +51,14 @@ const CoursesSlider = () => {
     getCourses();
   }, []);
 
-  const addReserve = async (id) => {
+  const addReserve = async (id:number) => {
     console.log(id);
 
     const body = {
       courseId: id,
     };
     const path = `/CourseReserve/ReserveAdd`;
-    const response = await postApi({ path, body });
+    const response = await (postApi({ path, body })) as dataApi;
     if (response.data.success) {
       toast.success("دوره شما با موفقیت رزرو شد.");
     }
@@ -47,9 +66,9 @@ const CoursesSlider = () => {
 
   return (
     <>
-      <div class="text-center leading-10 mt-24 dark:text-white">
-        <p class="text-[35px] font-bold">دوره های ما</p>
-        <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
+      <div className="text-center leading-10 mt-24 dark:text-white">
+        <p className="text-[35px] font-bold">دوره های ما</p>
+        <p className="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
       </div>
 
       <Swiper
@@ -98,7 +117,7 @@ const CoursesSlider = () => {
                       </div>
                     </div>
 
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer mx-auto p-2">
+                    <button className="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer mx-auto p-2">
                       {item?.statusName}
                     </button>
                   </div>
@@ -173,7 +192,7 @@ const CoursesSlider = () => {
       </Swiper>
 
       <div className="flex justify-center items-center ">
-       <Link to="/courses-list"> <button class="w-[220px] h-[60px] text-white bg-[#12926C] dark:bg-gray-800 rounded-full ">
+       <Link to="/courses-list"> <button className="w-[220px] h-[60px] text-white bg-[#12926C] dark:bg-gray-800 rounded-full ">
           مشاهده دوره های بیشتر
         </button></Link>
       </div>
