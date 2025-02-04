@@ -1,19 +1,12 @@
-import React from 'react'
-import { loginAPI } from "../../core/services/api/auth";
-import login2Pick from "../../assets/login2Pic.svg";
-
-import loginPick from "../../assets/loginPick.svg";
-
-import { useState } from 'react';
-// import { RegisterApi } from '../../core/api/register';
 import { StepOne } from './StepOne';
 import { StepTwo } from './StepTwo';
 import { StepThree } from './StepThree';
+import { useState } from 'react';
 
 
 
 
-const RegisterForm = (props) => {
+const RegisterForm = (props:Record <string ,string |number>) => {
 
        
     const [step, setstep] = useState(1)
@@ -33,21 +26,7 @@ const RegisterForm = (props) => {
 
 }
 
-
-
-
-
-
-
-
-       
-
-
-
-
-
     
-
     </>
   )
 }

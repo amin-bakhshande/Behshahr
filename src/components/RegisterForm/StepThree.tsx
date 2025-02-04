@@ -13,7 +13,7 @@ const StepThree = () => {
 
   console.log(location?.state);
 
-  const registerHandler3 = async (values) => {
+  const registerHandler3 = async (values:{phoneNumber:string;gmail:string ; password:string}) => {
     console.log(values);
     const body = values;
 

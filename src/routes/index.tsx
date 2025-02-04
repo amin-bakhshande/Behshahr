@@ -4,7 +4,7 @@ import { AboutUs } from "../screens/AboutUs";
 import { CoursesDetails } from "../screens/CoursesDetails";
 import { ArticlesDetails } from "../screens/ArticlesDetails";
 import { NewsArticles } from "../screens/NewsArticles";
-import { NotFound } from "./../components/NotFound/index.jsx";
+import { NotFound } from "../components/NotFound";
 import { Login } from "../screens/Login";
 import { MyCourses } from "../components/MyCourses/myCourses";
 import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
@@ -21,7 +21,7 @@ import { ForgetStepOne } from "../components/ForgetPasswordForm/StepOne";
 import { ForgetStepTwo } from "../components/ForgetPasswordForm/StepTwo";
 import PassProvider from "../core/provider/PasswoedProvider";
 import { ForgetPasswordForm } from "../components/ForgetPasswordForm/index.jsx";
-import { CoursesListForm } from "../components/CoursesListForm/index.tsx";
+import { CoursesListForm } from "../components/CoursesListForm";
 import { CoursesList } from "../screens/CoursesList/index.jsx";
 import { MainLayout } from "../screens/layout/MainLayout.jsx";
 

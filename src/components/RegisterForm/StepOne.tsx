@@ -7,14 +7,23 @@ import { SendVerifyMessage } from "../../core/api/register";
 import { toast } from "react-toastify";
 import { postApi } from "../../core/api/api";
 
+interface dataApi {
+  status:number;
+  response:{
+  data:{
+    ErrorMessage:string[];
+  }
+}
+}
+
 const StepOne = () => {
   const navigate = useNavigate();
 
-  const registerHandler = async (values) => {
+  const registerHandler = async (values:{phoneNumber:string}) => {
     console.log("ارسال: ", values);
     const path = "/Sign/SendVerifyMessage";
     const body = values;
-    const response = await postApi({ path, body });
+    const response = await (postApi({ path, body })) as dataApi;
     console.log(response);
 
     if (response.status === 200) {
